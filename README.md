@@ -1,94 +1,160 @@
-<p align="center">
-  <a href="https://github.com/feige996/unibest">
-    <img width="160" src="./src/static/logo.svg">
-  </a>
-</p>
-
 <h1 align="center">
-  <a href="https://github.com/feige996/unibest" target="_blank">unibest - 最好的 uniapp 开发框架</a>
+  ez-forum
 </h1>
 
 <div align="center">
-旧仓库 codercup 进不去了，star 也拿不回来，这里也展示一下那个地址的 star.
 
-[![GitHub Repo stars](https://img.shields.io/github/stars/codercup/unibest?style=flat&logo=github)](https://github.com/codercup/unibest)
-[![GitHub forks](https://img.shields.io/github/forks/codercup/unibest?style=flat&logo=github)](https://github.com/codercup/unibest)
-
-</div>
-
-<div align="center">
-
-[![GitHub Repo stars](https://img.shields.io/github/stars/feige996/unibest?style=flat&logo=github)](https://github.com/feige996/unibest)
-[![GitHub forks](https://img.shields.io/github/forks/feige996/unibest?style=flat&logo=github)](https://github.com/feige996/unibest)
-[![star](https://gitee.com/feige996/unibest/badge/star.svg?theme=dark)](https://gitee.com/feige996/unibest/stargazers)
-[![fork](https://gitee.com/feige996/unibest/badge/fork.svg?theme=dark)](https://gitee.com/feige996/unibest/members)
-![node version](https://img.shields.io/badge/node-%3E%3D18-green)
-![pnpm version](https://img.shields.io/badge/pnpm-%3E%3D7.30-green)
-![GitHub package.json version (subfolder of monorepo)](https://img.shields.io/github/package-json/v/feige996/unibest)
-![GitHub License](https://img.shields.io/github/license/feige996/unibest)
+![Vue Version](https://img.shields.io/badge/Vue-3.4.21-brightgreen.svg)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.7.2-blue.svg)
+![Uni-App](https://img.shields.io/badge/Uni--App-3.0.0-green.svg)
+![Node Version](https://img.shields.io/badge/node-%3E%3D18-green)
+![PNPM Version](https://img.shields.io/badge/pnpm-%3E%3D7.30-green)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
 </div>
 
-`unibest` —— 最好的 `uniapp` 开发模板，由 `uniapp` + `Vue3` + `Ts` + `Vite5` + `UnoCss` + `wot-ui` + `z-paging` 构成，使用了最新的前端技术栈，无需依靠 `HBuilderX`，通过命令行方式运行 `web`、`小程序` 和 `App`（编辑器推荐 `VSCode`，可选 `webstorm`）。
+## 📱 项目简介
 
-`unibest` 内置了 `约定式路由`、`layout布局`、`请求封装`、`请求拦截`、`登录拦截`、`UnoCSS`、`i18n多语言` 等基础功能，提供了 `代码提示`、`自动格式化`、`统一配置`、`代码片段` 等辅助功能，让你编写 `uniapp` 拥有 `best` 体验 （ `unibest 的由来`）。
+EZ论坛是一个基于 uni-app 开发的现代化社区交流平台，支持多端部署，包括 H5、微信小程序、App 等。项目采用 Vue 3 + TypeScript + Vite 构建，提供了流畅的用户体验和丰富的社区功能。
 
-![](https://raw.githubusercontent.com/andreasbm/readme/master/screenshots/lines/rainbow.png)
+## ✨ 主要特性
 
-<p align="center">
-  <a href="https://unibest.tech/" target="_blank">📖 文档地址(new)</a>
-  <span style="margin:0 10px;">|</span>
-  <a href="https://feige996.github.io/hello-unibest/" target="_blank">📱 DEMO 地址</a>
-</p>
+- 📋 **帖子浏览**：支持瀑布流布局，图文并茂展示社区内容
+- 🖼️ **图片轮播**：帖子详情页支持多图轮播展示
+- 💬 **评论互动**：支持帖子评论，促进用户交流
+- 📝 **内容发布**：用户可发布图文帖子，分享精彩内容
+- 👤 **用户中心**：个人资料管理，查看历史发布内容
+- 🔒 **用户认证**：完善的登录注册功能，保障账户安全
+- 📱 **多端适配**：一套代码，多端运行（H5、小程序、App）
 
----
+## 🛠️ 技术栈
 
-注意旧的地址 [codercup](https://github.com/codercup/unibest) 我进不去了，使用新的 [feige996](https://github.com/feige996/unibest)。PR和 issue 也请使用新地址，否则无法合并。
+- **前端框架**：Vue 3 + TypeScript + Vite
+- **跨端框架**：uni-app
+- **UI 组件**：wot-design-uni + @dcloudio/uni-ui
+- **状态管理**：Pinia
+- **分页组件**：z-paging
+- **CSS 框架**：UnoCSS
+- **HTTP 请求**：uni.request + 自定义封装
 
-## 平台兼容性
+## 📦 快速开始
 
-| H5  | IOS | 安卓 | 微信小程序 | 字节小程序 | 快手小程序 | 支付宝小程序 | 钉钉小程序 | 百度小程序 |
-| --- | --- | ---- | ---------- | ---------- | ---------- | ------------ | ---------- | ---------- |
-| √   | √   | √    | √          | √          | √          | √            | √          | √          |
+### 环境要求
 
-注意每种 `UI框架` 支持的平台有所不同，详情请看各 `UI框架` 的官网，也可以看 `unibest` 文档。
+- Node.js >= 18
+- pnpm >= 7.30
 
-## ⚙️ 环境
+### 安装依赖
 
-- node>=18
-- pnpm>=7.30
-- Vue Official>=2.1.10
-- TypeScript>=5.0
+```bash
+pnpm install
+```
 
-## &#x1F4C2; 快速开始
+### 开发运行
 
-执行 `pnpm create unibest` 创建项目
+```bash
+# H5
+pnpm dev:h5
 
-执行 `pnpm i` 安装依赖
+# 微信小程序
+pnpm dev:mp-weixin
 
-执行 `pnpm dev` 运行 `H5`
+# App
+pnpm dev:app
+```
 
-## 📦 运行（支持热更新）
+### 打包构建
 
-- web平台： `pnpm dev:h5`, 然后打开 [http://localhost:9000/](http://localhost:9000/)。
-- weixin平台：`pnpm dev:mp-weixin` 然后打开微信开发者工具，导入本地文件夹，选择本项目的`dist/dev/mp-weixin` 文件。
-- APP平台：`pnpm dev:app`, 然后打开 `HBuilderX`，导入刚刚生成的`dist/dev/app` 文件夹，选择运行到模拟器(开发时优先使用)，或者运行的安卓/ios基座。
+```bash
+# H5
+pnpm build:h5
 
-## 🔗 发布
+# 微信小程序
+pnpm build:mp-weixin
 
-- web平台： `pnpm build:h5`，打包后的文件在 `dist/build/h5`，可以放到web服务器，如nginx运行。如果最终不是放在根目录，可以在 `manifest.config.ts` 文件的 `h5.router.base` 属性进行修改。
-- weixin平台：`pnpm build:mp-weixin`, 打包后的文件在 `dist/build/mp-weixin`，然后通过微信开发者工具导入，并点击右上角的“上传”按钮进行上传。
-- APP平台：`pnpm build:app`, 然后打开 `HBuilderX`，导入刚刚生成的`dist/build/app` 文件夹，选择发行 - APP云打包。
+# App
+pnpm build:app
+```
+
+## 📂 项目结构
+
+```
+├── src
+│   ├── App.vue                 # 应用入口组件
+│   ├── components              # 公共组件
+│   │   ├── CommentList.vue     # 评论列表组件
+│   │   ├── CustomTabBar.vue    # 自定义底部导航栏组件
+│   │   ├── PostCard.vue        # 帖子卡片组件
+│   │   └── ...                 # 其他组件
+│   ├── composables             # 组合式函数
+│   ├── interceptions           # 拦截器
+│   ├── pages                   # 页面
+│   │   ├── forum               # 论坛相关页面
+│   │   ├── post                # 帖子相关页面
+│   │   └── user                # 用户相关页面
+│   ├── pages.json              # 页面配置
+│   ├── service                 # 服务层
+│   ├── static                  # 静态资源
+│   │   ├── tabbar              # 底部导航图标
+│   │   └── images              # 图片资源
+│   ├── stores                  # 状态管理
+│   ├── styles                  # 全局样式
+│   ├── types                   # 类型定义
+│   └── utils                   # 工具函数
+└── ...
+```
+
+## 🎨 UI 展示
+
+应用采用现代化设计风格，界面简洁直观：
+
+- **首页**：瀑布流展示帖子，支持下拉刷新和上拉加载更多
+- **帖子详情**：顶部图片轮播，下方显示帖子内容和评论
+- **发布页**：支持多图上传和文字编辑
+- **个人中心**：展示用户信息和操作选项
+
+## 🧩 底部导航
+
+应用使用原生 tabBar 导航，包含三个主要选项：
+
+- **论坛**：浏览社区内容
+- **发布**：创建新帖子
+- **我的**：个人中心
+
+tabBar 图标位于 `src/static/tabbar/` 目录，包括：
+
+- home.png / homeHL.png：论坛图标（普通/高亮）
+- publish.png / publishHL.png：发布图标（普通/高亮）
+- example.png / exampleHL.png：个人中心图标（普通/高亮）
+
+## 📋 功能说明
+
+### 帖子列表
+
+- 瀑布流布局展示帖子
+- 每个帖子卡片显示标题、首图、浏览量和评论数
+- 点击卡片进入帖子详情
+
+### 帖子详情
+
+- 顶部图片轮播展示所有图片
+- 下方显示帖子标题、内容和评论
+- 支持评论交互
+
+### 发布功能
+
+- 支持多图上传
+- 文字内容编辑
+- 发布后自动刷新列表
+
+### 用户中心
+
+- 个人信息展示
+- 我的帖子查看
+- 账户设置
 
 ## 📄 License
 
 [MIT](https://opensource.org/license/mit/)
 
-Copyright (c) 2025 菲鸽
-
-## 捐赠
-
-<p align='center'>
-<img alt="special sponsor appwrite" src="./screenshots/pay-1.png" height="330" style="display:inline-block; height:330px;">
-<img alt="special sponsor appwrite" src="./screenshots/pay-2.png" height="330" style="display:inline-block; height:330px; margin-left:10px;">
-</p>
+Copyright (c) 2025 EZ论坛团队
