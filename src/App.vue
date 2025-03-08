@@ -1,13 +1,33 @@
-<script setup lang="ts">
+<template>
+  <view class="app-container">
+    <router-view></router-view>
+  </view>
+</template>
+
+<script lang="ts" setup>
+import { ref, computed, watch } from 'vue'
 import { onLaunch, onShow, onHide } from '@dcloudio/uni-app'
 import 'abortcontroller-polyfill/dist/abortcontroller-polyfill-only'
+
+// 是否显示tabBar
+const showTabBar = computed(() => {
+  const pages = getCurrentPages()
+  if (pages.length === 0) return true
+
+  const currentRoute = pages[pages.length - 1].route
+  // 在这些页面显示tabBar
+  const tabBarPages = ['pages/forum/index', 'pages/user/profile']
+  return tabBarPages.includes(currentRoute)
+})
 
 onLaunch(() => {
   console.log('App Launch')
 })
+
 onShow(() => {
   console.log('App Show')
 })
+
 onHide(() => {
   console.log('App Hide')
 })
@@ -55,5 +75,10 @@ image {
   text-overflow: ellipsis;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+}
+
+.app-container {
+  width: 100%;
+  min-height: 100vh;
 }
 </style>

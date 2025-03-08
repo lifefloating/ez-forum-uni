@@ -1,4 +1,4 @@
-import { pages, subPackages, tabBar } from '@/pages.json'
+import { pages, subPackages } from '@/pages.json'
 import { isMpWeixin } from './platform'
 
 const getLastPage = () => {
@@ -11,16 +11,11 @@ const getLastPage = () => {
 
 /** 判断当前页面是否是 tabbar 页  */
 export const getIsTabbar = () => {
-  if (!tabBar) {
-    return false
-  }
-  if (!tabBar.list.length) {
-    // 通常有 tabBar 的话，list 不能有空，且至少有2个元素，这里其实不用处理
-    return false
-  }
+  // 自定义tabBar页面
+  const tabBarPages = ['pages/forum/index', 'pages/user/profile']
   const lastPage = getLastPage()
   const currPath = lastPage.route
-  return !!tabBar.list.find((e) => e.pagePath === currPath)
+  return tabBarPages.includes(currPath)
 }
 
 /**

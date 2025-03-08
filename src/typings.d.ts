@@ -25,4 +25,10 @@ declare global {
   }
 }
 
+export enum TestEnum {
+  A = 'A',
+  B = 'B',
+  C = 'C',
+}
+
 export {} // 防止模块污染

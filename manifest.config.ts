@@ -16,7 +16,7 @@ const {
 export default defineManifestConfig({
   name: VITE_APP_TITLE,
   appid: VITE_UNI_APPID,
-  description: '',
+  description: '一个简单易用的论坛应用',
   versionName: '1.0.0',
   versionCode: '100',
   transformPx: false,

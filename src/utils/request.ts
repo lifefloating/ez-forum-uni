@@ -1,76 +1,98 @@
-import { CustomRequestOptions } from '@/interceptors/request'
+// HTTP request utility
+interface RequestOptions {
+  url: string
+  method: 'GET' | 'POST' | 'PUT' | 'DELETE'
+  data?: any
+  params?: any
+  headers?: Record<string, string>
+}
 
-/**
- * 请求方法: 主要是对 uni.request 的封装，去适配 openapi-ts-request 的 request 方法
- * @param options 请求参数
- * @returns 返回 Promise 对象
- */
-const http = <T>(options: CustomRequestOptions) => {
-  // 1. 返回 Promise 对象
-  return new Promise<T>((resolve, reject) => {
+// 判断是否使用代理
+const useProxy = __VITE_APP_PROXY__ === 'true'
+
+// 根据是否使用代理决定 BASE_URL
+// 如果使用代理，BASE_URL 为空，因为代理已经配置了前缀
+// 如果不使用代理，BASE_URL 应该是完整的后端地址
+const BASE_URL = useProxy ? '' : 'http://localhost:3009'
+
+// Request function
+export const request = async <T>(options: RequestOptions): Promise<T> => {
+  const { url, method, data, params, headers = {} } = options
+
+  // Add authorization header if token exists
+  const token = uni.getStorageSync('token')
+  if (token) {
+    headers.Authorization = `Bearer ${token}`
+  }
+
+  // Build URL with query parameters
+  let requestUrl = BASE_URL + url
+  if (params) {
+    const queryString = Object.entries(params)
+      .filter(([_, value]) => value !== undefined && value !== null)
+      .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(String(value))}`)
+      .join('&')
+
+    if (queryString) {
+      requestUrl += `?${queryString}`
+    }
+  }
+
+  console.log('Request URL:', requestUrl)
+
+  // Return promise
+  return new Promise((resolve, reject) => {
     uni.request({
-      ...options,
-      dataType: 'json',
-      // #ifndef MP-WEIXIN
-      responseType: 'json',
-      // #endif
-      // 响应成功
-      success(res) {
-        // 状态码 2xx，参考 axios 的设计
+      url: requestUrl,
+      method,
+      data,
+      header: {
+        'Content-Type': 'application/json',
+        ...headers,
+      },
+      success: (res) => {
+        // Check if response is successful
         if (res.statusCode >= 200 && res.statusCode < 300) {
-          // 2.1 提取核心数据 res.data
           resolve(res.data as T)
         } else if (res.statusCode === 401) {
-          // 401错误  -> 清理用户信息，跳转到登录页
-          // userStore.clearUserInfo()
-          // uni.navigateTo({ url: '/pages/login/login' })
-          reject(res)
-        } else {
-          // 其他错误 -> 根据后端错误信息轻提示
-          !options.hideErrorToast &&
-            uni.showToast({
-              icon: 'none',
-              title: (res.data as T & { msg?: string })?.msg || '请求错误',
+          // Handle unauthorized error
+          uni.removeStorageSync('token')
+          uni.removeStorageSync('user')
+
+          uni.showToast({
+            title: '请先登录',
+            icon: 'none',
+          })
+
+          // Navigate to login page
+          setTimeout(() => {
+            uni.navigateTo({
+              url: '/pages/user/login',
             })
-          reject(res)
+          }, 1500)
+
+          reject(new Error('Unauthorized'))
+        } else {
+          // Handle other errors
+          uni.showToast({
+            title: (res.data as any)?.message || '请求失败',
+            icon: 'none',
+          })
+
+          reject(new Error((res.data as any)?.message || 'Request failed'))
         }
       },
-      // 响应失败
-      fail(err) {
+      fail: (err) => {
+        console.error('Request failed:', err)
         uni.showToast({
+          title: '网络错误',
           icon: 'none',
-          title: '网络错误，换个网络试试',
         })
+
         reject(err)
       },
     })
   })
 }
 
-/*
- * openapi-ts-request 工具的 request 跨客户端适配方法
- */
-export default function request<T = unknown>(
-  url: string,
-  options: Omit<CustomRequestOptions, 'url'> & {
-    params?: Record<string, unknown>
-    headers?: Record<string, unknown>
-  },
-) {
-  const requestOptions = {
-    url,
-    ...options,
-  }
-
-  if (options.params) {
-    requestOptions.query = requestOptions.params
-    delete requestOptions.params
-  }
-
-  if (options.headers) {
-    requestOptions.header = options.headers
-    delete requestOptions.headers
-  }
-
-  return http<T>(requestOptions)
-}
+export default request

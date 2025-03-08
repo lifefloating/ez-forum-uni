@@ -21,7 +21,8 @@
       "@types/wechat-miniprogram",
       "wot-design-uni/global.d.ts",
       "z-paging/types",
-      "./src/typings.d.ts"
+      "./src/typings.d.ts",
+      "./src/types/uni-app.d.ts"
     ]
   },
   "vueCompilerOptions": {

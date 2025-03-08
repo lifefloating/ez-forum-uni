@@ -1,7 +1,7 @@
 {
   "globalStyle": {
     "navigationStyle": "default",
-    "navigationBarTitleText": "unibest",
+    "navigationBarTitleText": "EZ论坛",
     "navigationBarBackgroundColor": "#f8f8f8",
     "navigationBarTextStyle": "black",
     "backgroundColor": "#FFFFFF"
@@ -15,8 +15,8 @@
   },
   "tabBar": {
     "color": "#999999",
-    "selectedColor": "#018d71",
-    "backgroundColor": "#F8F8F8",
+    "selectedColor": "#ff5a5f",
+    "backgroundColor": "#FFFFFF",
     "borderStyle": "black",
     "height": "50px",
     "fontSize": "10px",
@@ -26,31 +26,64 @@
       {
         "iconPath": "static/tabbar/home.png",
         "selectedIconPath": "static/tabbar/homeHL.png",
-        "pagePath": "pages/index/index",
-        "text": "首页"
+        "pagePath": "pages/forum/index",
+        "text": "论坛"
+      },
+      {
+        "iconPath": "static/tabbar/publish.png",
+        "selectedIconPath": "static/tabbar/publishHL.png",
+        "pagePath": "pages/forum/publish",
+        "text": "发布"
       },
       {
         "iconPath": "static/tabbar/example.png",
         "selectedIconPath": "static/tabbar/exampleHL.png",
-        "pagePath": "pages/about/about",
-        "text": "关于"
+        "pagePath": "pages/user/profile",
+        "text": "我的"
       }
     ]
   },
   "pages": [
     {
-      "path": "pages/index/index",
-      "type": "home",
+      "path": "pages/forum/index",
+      "type": "page",
       "style": {
-        "navigationStyle": "custom",
-        "navigationBarTitleText": "首页"
+        "navigationBarTitleText": "论坛"
       }
     },
     {
-      "path": "pages/about/about",
+      "path": "pages/forum/publish",
       "type": "page",
       "style": {
-        "navigationBarTitleText": "关于"
+        "navigationBarTitleText": "发布帖子"
+      }
+    },
+    {
+      "path": "pages/post/detail",
+      "type": "page",
+      "style": {
+        "navigationBarTitleText": "帖子详情"
+      }
+    },
+    {
+      "path": "pages/user/login",
+      "type": "page",
+      "style": {
+        "navigationBarTitleText": "登录"
+      }
+    },
+    {
+      "path": "pages/user/profile",
+      "type": "page",
+      "style": {
+        "navigationBarTitleText": "个人中心"
+      }
+    },
+    {
+      "path": "pages/user/register",
+      "type": "page",
+      "style": {
+        "navigationBarTitleText": "注册"
       }
     }
   ],
