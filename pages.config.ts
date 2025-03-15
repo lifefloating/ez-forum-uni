@@ -33,6 +33,12 @@ export default defineUniPages({
         text: '论坛',
       },
       {
+        iconPath: 'static/tabbar/publish.png',
+        selectedIconPath: 'static/tabbar/publishHL.png',
+        pagePath: 'pages/forum/publish',
+        text: '发布',
+      },
+      {
         iconPath: 'static/tabbar/example.png',
         selectedIconPath: 'static/tabbar/exampleHL.png',
         pagePath: 'pages/user/profile',
